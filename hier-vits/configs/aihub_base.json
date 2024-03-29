@@ -1,0 +1,83 @@
+{
+  "train": {
+    "log_interval": 200,
+    "eval_interval": 1000,
+    "seed": 1234,
+    "epochs": 100000,
+    "learning_rate": 2e-4,
+    "betas": [0.8, 0.99],
+    "eps": 1e-9,
+    "batch_size": 64,
+    "fp16_run": true,
+    "lr_decay": 0.999875,
+    "segment_size": 8192,
+    "init_lr_ratio": 1,
+    "warmup_epochs": 5,
+    "c_mel": 45,
+    "c_kl": 1.0
+  },
+  "data": {
+    "training_files": {
+        "stage" : "train",
+        "speaker": ["M0001_PSB", "M0002_LYT", "M0003_JCH", "M0004_SDH", "M0005_LJB",
+            "M0006_LHJ", "M0007_JYS", "M0008_JYC", "M0009_JYW", "M0010_CST", "M0012_CHY", "F0013_SHR", "F0014_ASH", "F0015_OES",
+            "F0016_YSH", "F0017_LSY", "F0018_JBR", "F0019_JSY", "F0020_HGW", "M0022_KKI", "M0023_KSH", "M0024_PGJ", "F0026_JSH",
+            "F0027_KYK", "F0028_KJS", "F0030_PSM", "F0031_LJA", "F0033_KMA", "M0035_KIH", "M0037_SJH", "M0038_OMH", "F0044_KTH",
+            "F0046_SSH", "M0011_CYJ", "M0021_GTE", "F0025_GJY", "F0029_KJE", "M0032_KDD", "F0034_LJH", "M0036_BJS", "F0043_GYJ",
+            "M0039_LSJ", "M0040_JMH", "M0041_JBG", "M0042_CHS", "F0045_PMK", "F0047_LSJ", "F0048_LSW", "F0049_HSJ", "F0050_HJH"],
+        "datadir": ["/nfs-data-2/jaeyoung/speech/aihub/multi_style_tts"],
+        "audiodir": ["flac_basename_22050"],
+        "filelist": ["/data/jaeyoung/speech/aihub/multi_style_tts/metadata/train_dataset.csv"]
+    },
+    "validation_files": {
+        "stage" : "valid",
+        "speaker": ["M0001_PSB"],
+        "datadir": ["/nfs-data-2/jaeyoung/speech/aihub/multi_style_tts"],
+        "audiodir": ["flac_basename_22050"],
+        "filelist": ["/data/jaeyoung/speech/aihub/multi_style_tts/metadata/validation_dataset.csv"]
+    },
+    "text_cleaners":["korean_cleaner"],
+    "max_wav_value": 32768.0,
+    "sampling_rate": 22050,
+    "filter_length": 1024,
+    "hop_length": 256,
+    "win_length": 1024,
+    "n_mel_channels": 80,
+    "mel_fmin": 0.0,
+    "mel_fmax": null,
+    "add_blank": true,
+    "n_speakers": 50,
+    "cleaned_text": false
+  },
+  "model": {
+    "linguistic_encoder": {
+      "conv_stack": 16,
+      "kernel_size": 5,
+      "dilation_rate": 1,
+      "dropout_rate": 0.1
+    },
+    "linguistic_flow": {
+      "stack": 4,
+      "conv_stack": 4,
+      "kernel_size": 5,
+      "dilation_rate": 1,
+      "dropout_rate": 0.1
+    },
+    "inter_channels": 192,
+    "hidden_channels": 192,
+    "filter_channels": 768,
+    "n_heads": 2,
+    "n_layers": 6,
+    "kernel_size": 3,
+    "p_dropout": 0.1,
+    "resblock": "1",
+    "resblock_kernel_sizes": [3,7,11],
+    "resblock_dilation_sizes": [[1,3,5], [1,3,5], [1,3,5]],
+    "upsample_rates": [8,8,2,2],
+    "upsample_initial_channel": 512,
+    "upsample_kernel_sizes": [16,16,4,4],
+    "n_layers_q": 4,
+    "use_spectral_norm": false,
+    "gin_channels": 256
+  }
+}
