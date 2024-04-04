@@ -7,8 +7,6 @@ os.environ['MASTER_PORT'] = '54313'   # 230915_aihub_hier_vits_detdp_rmsnorm_neu
 
 # os.environ['MASTER_PORT'] = '54314' # 230915_aihub_hier_vits_detdp_rmsnorm_neutral # gpu5-0
 # os.environ['MASTER_PORT'] = '54315' # 230902_aihub_hier_vits_sdp # gpu5-9
-
-# os.environ['MASTER_PORT'] = '54318'  # 230830_aihub_neutral_sdp # gpu5-1
 # os.environ['MASTER_PORT'] = '54319'  # 230830_aihub_neutral_detdp # gpu5-2
 # os.environ['MASTER_PORT'] = '54321'  # bucket_all_aihub_detdp  # gpu5-4
 # os.environ['MASTER_PORT'] = '54320' # bucket_all_aihub  # gpu5-3
